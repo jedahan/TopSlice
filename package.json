@@ -4,7 +4,9 @@
   "description": "",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html",
+    "build": "parcel build index.html --public-url '.'",
+    "predeploy": "rm -rf dist && parcel build index.html --public-url '.'",
+    "deploy": "gh-pages -d dist",
     "typecheck": "tsc --noEmit",
     "typewatch": "tsc --noEmit --watch"
   },
@@ -18,6 +20,7 @@
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.7",
     "babel-preset-nano-react-app": "^0.1.0",
+    "gh-pages": "^3.1.0",
     "parcel": "^2.0.0-alpha.3.2",
     "typescript": "^3.8.3"
   },
