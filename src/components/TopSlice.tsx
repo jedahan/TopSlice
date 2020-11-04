@@ -14,7 +14,7 @@ const TopSlice: React.FC<TopSlice> = ({width, startPercent, endPercent, fillColo
   if (startPercent < 0 || startPercent > 1) throw new Error('Please choose a startPercent between zero and one')
   if (endPercent < 0 || endPercent > 1) throw new Error('Please choose an endPercent between zero and one')
 
-  const getCoordinatesForPercent = (percent: number) => [Math.cos, Math.sin]
+  const getCoordinatesForPercent = (percent: number) => [Math.sin, Math.cos]
     .map(trig => trig(2 * Math.PI * percent * 1/2))
 
   const [startX, startY] = getCoordinatesForPercent(startPercent)
@@ -31,8 +31,8 @@ const TopSlice: React.FC<TopSlice> = ({width, startPercent, endPercent, fillColo
   const svgns = "http://www.w3.org/2000/svg"
 
   return (
-    <svg width={width} height={width/2} viewBox='-1 -1 2 2' style={{transform: 'rotate(-0.5turn)' }}>
-      <path d={pathData} style={{fill: fillColor, transform: 'translateY(-50%) scale(2)'}} />
+    <svg width={width} height={width/2} viewBox='-1 -1 2 1'>
+      <path d={pathData} style={{fill: fillColor}} />
     </svg>
   )
 }
